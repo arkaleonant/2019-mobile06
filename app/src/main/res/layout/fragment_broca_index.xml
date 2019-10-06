@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="64dp"
-        android:text="Height"
+        android:text="Height in (cm)"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_gender" />
@@ -83,7 +83,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="input your height in cm"
+        android:text=""
         android:textSize="15dp"
         android:fontFamily="sans-serif-condensed-light"
         app:layout_constraintStart_toStartOf="@+id/guideline3"

@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import id.ac.polinema.idealbodyweight.fragments.AboutFragment;
+import id.ac.polinema.idealbodyweight.fragments.BmiIndexFragment;
 import id.ac.polinema.idealbodyweight.fragments.BrocaIndexFragment;
 import id.ac.polinema.idealbodyweight.fragments.MenuFragment;
 import id.ac.polinema.idealbodyweight.fragments.ResultFragment;
@@ -16,13 +17,15 @@ import id.ac.polinema.idealbodyweight.fragments.ResultFragment;
 public class MainActivity extends AppCompatActivity implements
 		MenuFragment.OnFragmentInteractionListener,
 		BrocaIndexFragment.OnFragmentInteractionListener,
-		ResultFragment.OnFragmentInteractionListener
+		ResultFragment.OnFragmentInteractionListener,
+		BmiIndexFragment.OnFragmentInteractionListener
 {
 
 	// Deklarasikan atribut Fragment di sini
 	MenuFragment menuFragment;
 	private AboutFragment aboutFragment;
     private BrocaIndexFragment brocaIndexFragment;
+    private BmiIndexFragment bmiIndexFragment;
 	private ResultFragment resultFragment;
 
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements
 
         brocaIndexFragment = new BrocaIndexFragment();
 		resultFragment = new ResultFragment();
+		bmiIndexFragment = new BmiIndexFragment();
 
 	}
 
@@ -71,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override
 	public void onBodyMassIndexButtonClicked() {
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.fragment_container, bmiIndexFragment)
+				.commit();
 
 	}
 
@@ -87,5 +94,19 @@ public class MainActivity extends AppCompatActivity implements
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.fragment_container, brocaIndexFragment)
 				.commit();
+	}
+		public void onTryAgainButtonClicked2 (String tag){
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.fragment_container, bmiIndexFragment)
+					.commit();
+		}
+
+	@Override
+	public void onCalculateBmiIndexClicked(float index) {
+		resultFragment.setInformation(String.format("Your normally weight is %.1f kg", index));
+		getSupportFragmentManager().beginTransaction()
+				.replace(R.id.fragment_container, resultFragment)
+				.commit();
+
 	}
 }
